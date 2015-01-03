@@ -1,6 +1,12 @@
 <div>
     <h2>Categories</h2>
     <ul class="list-group text-left">
-        <li ng-repeat="category in categories" class="list-group-item" make-active-on-click>{{category.name}}</li>
+        <li
+                ng-repeat="category in categories"
+                class="list-group-item"
+                make-active-on-click
+                data-object-id="{{category.id}}">
+            {{category.name}}
+        </li>
     </ul>
 </div>

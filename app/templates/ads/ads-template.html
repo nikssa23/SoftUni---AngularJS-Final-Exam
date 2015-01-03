@@ -1,0 +1,43 @@
+<div class="col-md-6" ng-repeat="ads in allAds">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+             <h3 class="panel-title "><a href="#/ads/{{ads.id}}">{{ads.title}}</a></h3>
+        </div>
+
+        <div class="panel-body">
+
+            <div class="row">
+
+                <div class="col-md-4">
+                    <a href="#" class="thumbnail">
+                        <img ng-src="{{ads.imageDataUrl}}" src=""/>
+                    </a>
+<!--                    <a href="" class="btn btn-success btn-sm">Price: 150.00 Lv.</a> -->
+                </div>
+
+                <div class="col-md-8">
+                    <ul type="none" style="margin-left: 0;">
+                        <li>
+                            <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+                            User: {{ads.ownerName}}
+                        </li>
+                        <li>
+                            <span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>
+                            Email: {{ads.ownerEmail}}
+                        </li>
+                        <li>
+                            <span class="glyphicon glyphicon-phone" aria-hidden="true"></span>
+                            Tel: {{ads.ownerPhone}}
+                        </li>
+                        <li>
+                            <span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>
+                            Date: {{ads.date}}
+                        </li>
+
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

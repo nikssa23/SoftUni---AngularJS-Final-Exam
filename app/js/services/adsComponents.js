@@ -2,9 +2,9 @@
 
 adsApp.factory("adsComponents",
 
-    function adsComponents($resource,$http,$q) {
-        var towns = $resource('http://softuni-ads.azurewebsites.net/api/towns');
-        var categories = $resource('http://softuni-ads.azurewebsites.net/api/categories');
+    function adsComponents($resource,$http,$q,baseUrl) {
+        var towns = $resource(baseUrl+'towns');
+        var categories = $resource(baseUrl+'categories');
 
     return {
         getTowns : function () {

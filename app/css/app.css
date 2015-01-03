@@ -15,3 +15,8 @@ input.ng-invalid.ng-dirty.form-validation{
 input.ng-valid.ng-dirty.form-validation{
     background:#419641 ;
 }
+
+
+.center-box{
+    margin: 0 auto;
+}

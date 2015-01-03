@@ -18,11 +18,12 @@ adsApp /* TOWNS */
     .directive("makeActiveOnClick", function () {
         return {
             restrict: "A",
-            link: function (scope, element, attr) {
+            link: function (scope, element) {
                 $(element).on('click', function () {
                     var parent = $(element).parent()
                     $(parent).find("li").removeClass("active");
                     $(element).addClass("active");
+                    alert($(element).attr("data-object-id"));
                 })
             }
         }
