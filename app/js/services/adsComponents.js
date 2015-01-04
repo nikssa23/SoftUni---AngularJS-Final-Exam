@@ -5,7 +5,7 @@ adsApp.factory("adsComponents",
     function adsComponents($resource,$http,$q,baseUrl) {
         var towns = $resource(baseUrl+'towns');
         var categories = $resource(baseUrl+'categories');
-        var adsList = $resource(baseUrl + 'ads?pagesize=10&startpage=1')
+        var allAdsList = $resource(baseUrl + 'ads?pagesize=10&startpage=1')
 
     return {
         getTowns : function () {
@@ -15,8 +15,25 @@ adsApp.factory("adsComponents",
             return categories.query();
         },
         getAdsList : function(){
-            return adsList.get();
+            return allAdsList.get();
+        },
+        loginUser : function(name,token){
+            localStorage.setItem('username',name);
+            localStorage.setItem('token',token);
+        },
+        getToken : function(){
+            return localStorage.getItem('token');
+        },
+        getUsername: function () {
+            return localStorage.getItem('username');
+        },
+        checkUserLogin: function(){
+            if(localStorage.getItem('token') !=undefined){
+                return true;
+            }
+            return false;
         }
+
     };
 
 });
