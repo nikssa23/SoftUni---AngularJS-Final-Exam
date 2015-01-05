@@ -49,7 +49,8 @@ adsApp.factory("adsComponents",
                 return localStorage.getItem('username');
             },
             checkUserLogin: function () {
-                if (localStorage.getItem('token') != undefined) {
+                var token = localStorage.getItem('token');
+                if (token != null || token != undefined) {
                     return true;
                 }
                 return false;

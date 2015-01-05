@@ -1,5 +1,5 @@
 
-<nav class="navbar navbar-default navbar-fixed-top">
+<nav class="navbar navbar-default navbar-fixed-top" >
     <div class="container">
         <div class="navbar-header">
             <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
@@ -11,7 +11,7 @@
             </button>
             <a class="navbar-brand" href="#/home">Alush Verish</a>
         </div>
-        <div id="navbar" class="navbar-collapse collapse" ng-controller="LoginController">
+        <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
                 <li class="active"><a href="#/ads">ALL ADS</a></li>
             </ul>
@@ -23,7 +23,6 @@
                     <input type="password" placeholder="Password" class="form-control" ng-model="user.password" required>
                 </div>
                 <button class="btn btn-success" ng-click="loginUser(user)">Login</button>
-                <button class="btn btn-success" ng-click="chview(user)">Change</button>
                 <a href="#/register" class="btn btn-info">Register</a>
             </form>
         </div>

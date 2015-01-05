@@ -23,7 +23,7 @@ adsApp /* TOWNS */
                     var parent = $(element).parent()
                     $(parent).find("li").removeClass("active");
                     $(element).addClass("active");
-                    alert($(element).attr("data-object-id"));
+//                    alert($(element).attr("data-object-id"));
                 })
             }
         }

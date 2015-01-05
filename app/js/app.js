@@ -13,6 +13,15 @@ var adsApp = angular
                 templateUrl: '/templates/ads/list-ads.html',
                 controller : 'LoadAdsController'
             })
+            .when('/myAds',{
+                templateUrl: '/templates/ads/my-ads.html'
+            })
+            .when('/addNew',{
+                templateUrl: '/templates/ads/add-new.html'
+            })
+            .when('/profile',{
+                templateUrl: '/templates/profile.html'
+            })
     })
     .constant('pageSize', '10')
     .constant('startPage', '1')

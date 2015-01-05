@@ -10,9 +10,13 @@
             </button>
             <a class="navbar-brand" href="#/home">Alush Verish</a>
         </div>
-        <div id="navbar" class="navbar-collapse collapse" ng-controller="LoginController">
+        <div id="navbar" class="navbar-collapse collapse" >
             <ul class="nav navbar-nav">
-                <li class="active"><a href="#/ads">ALL ADS</a></li>
+                <li class="active"><a href="#/ads">All ads</a></li>
+                <li make-active-on-click><a href="#/myAds">My ads</a></li>
+                <li make-active-on-click><a href="#/addNew">Add new</a></li>
+                <li make-active-on-click><a href="#/profile">Profile</a></li>
+                <li make-active-on-click class="pull-right"><a href="#" ng-click="logout()">Logout</a></li>
             </ul>
         </div>
         <!--/.navbar-collapse -->

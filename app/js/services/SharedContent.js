@@ -1,7 +1,8 @@
 adsApp.service('SharedContent', function SharedContent() {
     var guestHeaderTemplate = "/templates/header/guest.html";
     var userHeaderTemplate = "/templates/header/user.html";
-    var headerTemplate = guestHeaderTemplate;
+    var headerTemplate = userHeaderTemplate;
+
     return {
         setGuestHeader: function () {
             headerTemplate = guestHeaderTemplate;
@@ -10,7 +11,6 @@ adsApp.service('SharedContent', function SharedContent() {
             headerTemplate = userHeaderTemplate;
         },
         getHeaderTemplate: function () {
-            console.log("asdsadasd, " + headerTemplate );
             return  headerTemplate;
         }
     }
