@@ -28,6 +28,14 @@ adsApp /* TOWNS */
             }
         }
     })
+    .directive("selectpicker", function () {
+        return {
+            restrict: "A",
+            link: function (scope, element) {
+                $(element).selectpicker();
+            }
+        }
+    })
     /* CATEGORIES */
     .directive("listCategories", function () {
         return {
