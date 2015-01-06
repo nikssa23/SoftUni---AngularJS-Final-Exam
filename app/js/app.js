@@ -16,6 +16,12 @@ var adsApp = angular
             .when('/myAds',{
                 templateUrl: '/templates/ads/my-ads.html'
             })
+            .when('/myAds/delete/:id',{
+                templateUrl:"templates/ads/delete-my-ad.html"
+            })
+            .when('/myAds/edit/:id',{
+                templateUrl:"templates/ads/edit-my-ad.html"
+            })
             .when('/addNew',{
                 templateUrl: '/templates/ads/add-new.html'
             })
