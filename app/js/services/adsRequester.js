@@ -1,7 +1,7 @@
 adsApp.service('adsRequester', function adsRequester($resource,$http,baseUrl,userRequester) {
 
     var allAdsList = $resource(baseUrl + 'ads?pagesize=10&startpage=1');
-    var publishNewAdUrl = $resource(baseUrl + 'user/ads', {
+    var userAds = $resource(baseUrl + 'user/ads', {
         title: '@title',
         text: '@text',
         categoryid: '@categoryid',
@@ -19,11 +19,16 @@ adsApp.service('adsRequester', function adsRequester($resource,$http,baseUrl,use
 
     function publishNewAd(ad) {
         setHeaders();
-        return publishNewAdUrl.save(ad)
+        return userAds.save(ad)
     }
 
+    function getMyAds(){
+        setHeaders();
+        return userAds.get();
+    }
     return {
         publishNewAd: publishNewAd,
-        getAdsList: getAdsList
+        getAdsList: getAdsList,
+        getMyAds:getMyAds
     }
 })
