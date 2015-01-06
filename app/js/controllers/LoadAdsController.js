@@ -1,5 +1,5 @@
 adsApp.controller("LoadAdsController",
-    function LoadAdsController($scope, adsComponents) {
-        $scope.adsList = adsComponents.getAdsList();
+    function LoadAdsController($scope,adsRequester) {
+        $scope.adsList = adsRequester.getAdsList();
 
     });

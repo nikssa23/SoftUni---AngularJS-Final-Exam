@@ -1,27 +1,27 @@
-adsApp.controller('LoginAndRegisterController', function LoginAndRegisterController($scope, adsComponents, SharedContent) {
+adsApp.controller('LoginAndRegisterController', function LoginAndRegisterController($scope, userRequester, SharedContent) {
 
-    $scope.loadHeaderTeplate = adsComponents.checkUserLogin();
+    $scope.loadHeaderTeplate = userRequester.checkUserLogin();
     $scope.userName = "";
 
     $scope.loginUser = function (user) {
-        adsComponents.loginUser(user).then(function (data) {
-            adsComponents.makeUserLogged(data.username,data.access_token);
+        userRequester.loginUser(user).then(function (data) {
+            userRequester.makeUserLogged(data.username,data.access_token);
             $scope.loadHeaderTeplate = true;
-            $scope.userName = adsComponents.getUsername();
+            $scope.userName = userRequester.getUsername();
 
         });
     }
 
     $scope.registerUser = function (user) {
-        adsComponents.registerUser(user).then(function (data) {
-            adsComponents.loginUser(data.name, data.access_token);
+        userRequester.registerUser(user).then(function (data) {
+            userRequester.loginUser(data.name, data.access_token);
             $scope.loadHeaderTeplate = true;
-            $scope.userName = adsComponents.getUsername();
+            $scope.userName = userRequester.getUsername();
         });
     }
 
     $scope.logout = function () {
-        adsComponents.userLogout();
+        userRequester.userLogout();
         $scope.loadHeaderTeplate = false;
         $scope.userName = '';
 
