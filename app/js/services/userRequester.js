@@ -1,4 +1,4 @@
-adsApp.service('userRequester', function userRequester($resource,baseUrl) {
+adsApp.service('userRequester', function userRequester($resource,$http,$q,baseUrl) {
 
     function makeUserLogged(name, token) {
         localStorage.setItem('username', name);

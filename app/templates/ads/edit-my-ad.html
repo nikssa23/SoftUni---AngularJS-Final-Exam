@@ -1,0 +1,79 @@
+<div ng-controller="MyAdsController">
+    <br/>
+
+    <div class="page-header text-center">
+        <h2>Edit Ad</h2>
+    </div>
+
+    <div class="container ">
+        <div class="col-md-3 ">
+        </div>
+        <div class="col-md-6 ">
+            <form>
+                <ul type="none">
+
+                    <li><h3>Title:</h3></li>
+                    <li>
+                        <div class="input-group">
+                        <span class="input-group-addon">
+                            <span class="glyphicon glyphicon-font" aria-hidden="true"></span>
+                        </span>
+                            <input type="text" class="form-control" placeholder="Title" ng-model="ad.title"" >
+
+                        </div>
+                    </li>
+
+                    <li><h3>Text:</h3></li>
+                    <li>
+                        <div class="input-group">
+                        <span class="input-group-addon">
+                            <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
+                        </span>
+                            <textarea type="text" class="form-control" placeholder="Write text here ... " ng-model="ad.text"></textarea>
+                        </div>
+                    </li>
+
+                    <li><h3>Image:</h3></li>
+                    <li>
+                        <div class="input-group">
+                        <span class="input-group-addon">
+                            <span class="glyphicon glyphicon-picture" aria-hidden="true"></span>
+                        </span>
+                            <input type="file" class="form-control" placeholder="Title" ng-model="ad.ImageDataURL">
+                        </div>
+                    </li>
+
+                    <li><h3>Select Town</h3></li>
+
+                    <li>
+                        <div class="input-group">
+                        <span class="input-group-addon">
+                            <span class="glyphicon glyphicon-home" aria-hidden="true"></span>
+                        </span>
+
+                            <div select-town class="col-lg-12 form-control" ng-model="ad.townId" >
+                                placeholder="Town"></div>
+                        </div>
+                    </li>
+
+                    <li><h3>Select Category</h3></li>
+
+                    <li>
+                        <div class="input-group">
+                        <span class="input-group-addon">
+                            <span class="glyphicon glyphicon-tags" aria-hidden="true"></span>
+                        </span>
+                            <div select-categories class="col-lg-12 form-control" ng-model="ad.categoryId"></div>
+                        </div>
+                    </li>
+
+                    <li>
+                        <br/>
+                        <button class="btn btn-lg btn-info col-lg-12" ng-click="editMyAd(ad)">Publish</button>
+                    </li>
+
+                </ul>
+            </form>
+        </div>
+    </div>
+</div>

@@ -6,7 +6,7 @@
         </div>
     </div>
     <div >
-        <div class="col-md-12 " ng-repeat="ads in myAds">
+        <div class="col-md-6 " ng-repeat="ads in myAds">
 
             <div class="panel panel-default">
                 <div class="panel-heading">
@@ -17,26 +17,24 @@
 
                     <div class="row">
 
-                        <div class="col-md-2">
+                        <div class="col-md-3">
                             <a href="#" class="thumbnail">
                                 <img ng-src="{{ads.imageDataUrl}}" src="" style="height: 100px;"/>
                             </a>
                             <!--                    <a href="" class="btn btn-success btn-sm">Price: 150.00 Lv.</a> -->
                         </div>
-                        <div class="col-md-10">
+                        <div class="col-md-9">
                             <p>{{ads.text}}</p>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-md-12">
-                            <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
-                            By user: {{ads.ownerName}} &nbsp;&nbsp;
-                            <span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>
-                            Email: {{ads.ownerEmail}} &nbsp;&nbsp;
-                            <span class="glyphicon glyphicon-phone" aria-hidden="true"></span>
-                            Tel: {{ads.ownerPhone}} &nbsp;&nbsp;
                             <span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>
                             Date: {{ads.date | date : 'd-MMM-yyyy'}}
+                            <span class="glyphicon glyphicon-flag" aria-hidden="true"></span>
+                            Status : {{ads.status |  status}}
+                            <a href="#/myAds/edit/{{ads.id}}" class="btn btn-success btn-sm ">Edit</a>
+                            <a href="#/myAds/delete/{{ads.id}}" class="btn btn-danger btn-sm ">Delete</a>
                         </div>
                     </div>
 
