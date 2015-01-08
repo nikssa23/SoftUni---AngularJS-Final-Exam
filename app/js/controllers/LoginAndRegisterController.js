@@ -14,9 +14,11 @@ adsApp.controller('LoginAndRegisterController', function LoginAndRegisterControl
 
     $scope.registerUser = function (user) {
         userRequester.registerUser(user).then(function (data) {
-            userRequester.loginUser(data.name, data.access_token);
-            $scope.loadHeaderTeplate = true;
+            userRequester.makeUserLogged(data.username,data.access_token);
+            $scope.loadHeaderTeplate = userRequester.checkUserLogin();
             $scope.userName = userRequester.getUsername();
+        }, function (error) {
+            SharedContent.setModalMessage(error.message);
         });
     }
 

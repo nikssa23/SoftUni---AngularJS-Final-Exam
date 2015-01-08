@@ -1,4 +1,4 @@
-adsApp.service('adsRequester', function adsRequester($resource, $http, baseUrl, userRequester) {
+adsApp.service('adsRequester', function adsRequester($resource, $http, baseUrl,pageSize, userRequester, SharedContent) {
 
     var allAdsList = $resource(baseUrl + 'ads?pagesize=10&startpage=1');
 
@@ -51,12 +51,41 @@ adsApp.service('adsRequester', function adsRequester($resource, $http, baseUrl, 
         return userAds.delete(ad);
     }
 
+    function getAdsByFilter(){
+        var filterUrl = baseUrl+'ads';
+        if(SharedContent.getTown()!=null){
+            filterUrl+='?townid='+SharedContent.getTown();
+        }
+
+        if(SharedContent.getCategory()!=null){
+            if(SharedContent.getTown() == null){
+                filterUrl+='?';
+            }else{
+                filterUrl+="&";
+            }
+            filterUrl+='categoryid='+SharedContent.getCategory();
+        }
+
+        if(SharedContent.getSelectedPage()!== null){
+            if(SharedContent.getCategory()!==null || SharedContent.getTown()!==null){
+                filterUrl+='&';
+            }else{
+                filterUrl+="?";
+            }
+            filterUrl+='pagesize='+pageSize+'&startpage='+SharedContent.getSelectedPage();
+        }
+
+        var resourceUrl = $resource(filterUrl);
+      //  setHeaders();
+        return resourceUrl.get();
+    }
     return {
         publishNewAd: publishNewAd,
         getAdsList: getAdsList,
         getMyAds: getMyAds,
         getAdById: getAdById,
         updateMyAd:updateMyAd,
-        deleteAd:deleteAd
+        deleteAd:deleteAd,
+        getAdsByFilter:getAdsByFilter
     }
 })

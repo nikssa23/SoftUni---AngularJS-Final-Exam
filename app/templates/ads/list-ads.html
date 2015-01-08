@@ -1,5 +1,5 @@
 
-<div class="container">
+<div class="container" ng-controller="LoadAdsController">
     <br />
     <br />
     <br />
@@ -50,13 +50,13 @@
             <nav>
                 <ul class="pagination">
                     <li>
-                        <a href="#/ads/1" aria-label="Previous">
+                        <a href="" ng-click="selectPage(1)" aria-label="Previous">
                             <span aria-hidden="true">&laquo;</span>
                         </a>
                     </li>
-                    <li ng-repeat="page in [] | range : adsList.numPages"><a href="ads/{{page}}">{{page}}</a></li>
+                    <li ng-repeat="page in [] | range : adsList.numPages"><a href="" ng-click="selectPage(page)">{{page}}</a></li>
                     <li>
-                        <a href="#/ads/{{adsList.numPages}}" aria-label="Next">
+                        <a href="" ng-click="selectPage(adsList.numPages)" aria-label="Next">
                             <span aria-hidden="true">&raquo;</span>
                         </a>
                     </li>

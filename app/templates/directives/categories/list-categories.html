@@ -2,11 +2,18 @@
     <h2>Categories</h2>
     <ul class="list-group text-left">
         <li
+                class="list-group-item"
+                make-active-on-click>
+               <a ng-click="selectCategory(null)" href="">All
+            </a>
+        </li>
+        <li
                 ng-repeat="category in categories"
                 class="list-group-item"
                 make-active-on-click
                 data-object-id="{{category.id}}">
-            {{category.name}}
+            <a ng-click="selectCategory(category.id)" href=""> {{category.name}}
+            </a>
         </li>
     </ul>
 </div>

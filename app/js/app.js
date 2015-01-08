@@ -20,7 +20,7 @@ var adsApp = angular
                 templateUrl:"templates/ads/delete-my-ad.html"
             })
             .when('/myAds/edit/:id',{
-                templateUrl:"templates/ads/edit-my-ad.html"
+                templateUrl:"templates/ads/edit -my-ad.html"
             })
             .when('/addNew',{
                 templateUrl: '/templates/ads/add-new.html'
@@ -28,6 +28,10 @@ var adsApp = angular
             .when('/profile',{
                 templateUrl: '/templates/profile.html'
             })
+            .otherwise({
+                redirectTo: '/home'
+            });
+
     })
     .constant('pageSize', '10')
     .constant('startPage', '1')
