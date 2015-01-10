@@ -20,7 +20,7 @@ var adsApp = angular
                 templateUrl:"templates/ads/delete-my-ad.html"
             })
             .when('/myAds/edit/:id',{
-                templateUrl:"templates/ads/edit -my-ad.html"
+                templateUrl:"templates/ads/edit-my-ad.html"
             })
             .when('/addNew',{
                 templateUrl: '/templates/ads/add-new.html'
@@ -45,4 +45,3 @@ var adsApp = angular
         };
     });
 
-$('.selectpicker').selectpicker();
