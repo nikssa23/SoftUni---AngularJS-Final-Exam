@@ -1,6 +1,11 @@
 adsApp.controller("LoadAdsController",
-    function LoadAdsController($scope, adsRequester, SharedContent) {
+    function LoadAdsController($scope, adsRequester,adsComponents, SharedContent) {
+
+
         $scope.filterPagination = false;
+
+        $scope.towns = adsComponents.getTowns();
+        $scope.categories = adsComponents.getCategories();
 
         adsRequester.getAdsList().$promise.then(function (data) {
             $scope.adsList = data;

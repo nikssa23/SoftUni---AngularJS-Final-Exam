@@ -3,6 +3,10 @@ adsApp.controller('LoginAndRegisterController', function LoginAndRegisterControl
     $scope.loadHeaderTeplate = userRequester.checkUserLogin();
     $scope.userName = "";
 
+    if(!userRequester.checkUserLogin()){
+        $location.path('/home');
+    }
+
     if (userRequester.checkUserLogin()) {
         userRequester.getUserProfile().$promise.then(function (data) {
             $scope.user = data;

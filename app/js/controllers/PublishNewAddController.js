@@ -1,11 +1,15 @@
-adsApp.controller('PublishNewAddController', function PublishNewAddController($scope, adsRequester,SharedContent,$location) {
+adsApp.controller('PublishNewAddController', function PublishNewAddController($scope, adsRequester,userRequester,SharedContent,$location) {
+    if(!userRequester.checkUserLogin()){
+        $location.path('/home');
+    }
+
     $scope.publishAd = function (ad) {
 
         adsRequester.publishNewAd(ad).$promise.then(function (data) {
             $location.path('/myAds');
             SharedContent.setModalMessage(data.message);
         }, function (error) {
-            console.log(error.data.message);
+            console.log(error.message);
         })
     }
 
