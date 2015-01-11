@@ -8,6 +8,8 @@ var adsApp = angular
             })
             .when('/register', {
                 templateUrl: "/templates/register.html"
+                // controller: asdasd
+
             })
             .when('/ads',{
                 templateUrl: '/templates/ads/list-ads.html',

@@ -53,11 +53,9 @@ adsApp.controller('ManageMyAdsController', function ManageMyAdsController($scope
                     $scope.ad.changeImage = true;
                     $scope.ad.imageDataUrl = reader.result;
                 }
-
-                $scope.$apply();
-                $(".ad-img").html("" +
+                 $(".ad-img").html("" +
                 "<p>Click to changeimage</p>" +
-                "<img src='" + reader.result + "'>" +
+                "<img src='" +  $scope.ad.imageDataUrl + "'>" +
                 "<br /><br />");
             };
 

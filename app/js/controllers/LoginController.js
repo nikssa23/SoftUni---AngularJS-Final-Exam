@@ -1,7 +1,6 @@
-adsApp.controller('LoginAndRegisterController', function LoginAndRegisterController($scope, userRequester, SharedContent, $location) {
+adsApp.controller('LoginController', function LoginAndRegisterController($scope, userRequester, SharedContent, $location,TemplateService) {
 
-    $scope.loadHeaderTeplate = userRequester.checkUserLogin();
-    $scope.userName = "";
+       $scope.userName = "";
 
     if(userRequester.checkUserLogin()){
         $location.path('/home');
@@ -18,7 +17,7 @@ adsApp.controller('LoginAndRegisterController', function LoginAndRegisterControl
     $scope.loginUser = function (user) {
         userRequester.loginUser(user).then(function (data) {
             userRequester.makeUserLogged(data.username, data.access_token);
-            $scope.loadHeaderTeplate = true;
+           TemplateService.setTemplate(true);
             $scope.userName = userRequester.getUsername();
             $location.path("/ads");
         }, function (error) {
@@ -26,23 +25,12 @@ adsApp.controller('LoginAndRegisterController', function LoginAndRegisterControl
         });
     }
 
-    $scope.registerUser = function (user) {
-        userRequester.registerUser(user).then(function (data) {
-            userRequester.makeUserLogged(data.username, data.access_token);
-            $scope.loadHeaderTeplate = userRequester.checkUserLogin();
-            $scope.userName = userRequester.getUsername();
-            SharedContent.setModalMessage('Successful registration');
-            $location.path("/ads");
-        }, function (error) {
-            SharedContent.setModalMessage(error.message);
-        });
-    }
 
     $scope.logout = function () {
         userRequester.userLogout();
-        $scope.loadHeaderTeplate = false;
+        TemplateService.setTemplate(false);
         $scope.userName = '';
-
+        $location.path("/home");
     }
 
     $scope.updateProfile = function (user) {
