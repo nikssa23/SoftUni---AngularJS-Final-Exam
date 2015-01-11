@@ -2,7 +2,7 @@
     <br/>
 
     <div class="page-header text-center">
-        <h2>Delete Ad</h2>
+        <h2>Confirm Deleting Ad?</h2>
     </div>
 
     <div class="container ">
@@ -36,7 +36,7 @@
                     <li><h3>Image:</h3></li>
                     <li>
 
-                        <img ng-src="ad.ImageDataURL" src="" alt="" />
+                        <img ng-src="{{ad.imageDataUrl}}" src="" alt="" />
                     </li>
 
                     <li><h3>Select Town</h3></li>
@@ -65,7 +65,8 @@
 
                     <li>
                         <br/>
-                        <button class="btn btn-lg btn-danger col-lg-12" ng-click="deleteAd(ad)">Delete</button>
+                        <button class="btn btn-lg btn-danger col-lg-5" ng-click="deleteAd(ad)">Delete</button>
+                        <button class="btn btn-lg btn-default col-lg-5 col-lg-offset-2" ng-click="cancelDelete(ad)">Cancel</button>
                     </li>
 
                 </ul>

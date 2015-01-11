@@ -1,6 +1,6 @@
 'use strict';
 
-adsApp /* TOWNS */
+adsApp/* TOWNS */
     .directive("listTowns", function () {
         return {
             restrict: "A",
@@ -25,6 +25,18 @@ adsApp /* TOWNS */
                     $(element).addClass("active");
 //                    alert($(element).attr("data-object-id"));
                 })
+            }
+        }
+    })
+    .directive("fancybox", function () {
+        return {
+            restrict: "A",
+            link: function (scope, element) {
+                $(element).on('click', function () {
+                    element.fancybox({
+                        content: $("<img style='width:100%;'/>").attr("src", element.attr('img-data'))
+                    });
+                });
             }
         }
     })

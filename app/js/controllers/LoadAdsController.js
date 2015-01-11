@@ -1,13 +1,19 @@
 adsApp.controller("LoadAdsController",
     function LoadAdsController($scope, adsRequester, SharedContent) {
-        $scope.adsList = adsRequester.getAdsList();
         $scope.filterPagination = false;
+
+        adsRequester.getAdsList().$promise.then(function (data) {
+            $scope.adsList = data;
+        }, function (error) {
+            SharedContent.setModalMessage(error.message);
+        });
 
         $scope.selectCategory = function (categoryId) {
             SharedContent.selectCategory(categoryId);
             adsRequester.getAdsByFilter().$promise.then(function (data) {
                 $scope.adsList = data;
             }, function (error) {
+                SharedContent.setModalMessage(error.message);
             });
 
             $scope.filterPagination = true;
@@ -18,6 +24,7 @@ adsApp.controller("LoadAdsController",
             adsRequester.getAdsByFilter().$promise.then(function (data) {
                 $scope.adsList = data;
             }, function (error) {
+
             });
 
             $scope.filterPagination = true;
@@ -29,14 +36,21 @@ adsApp.controller("LoadAdsController",
             if ($scope.filterPagination = false) {
                 SharedContent.selectTown(null);
                 SharedContent.selectCategory(null);
-                $scope.adsList = adsRequester.getAdsByFilter();
+                adsRequester.getAdsByFilter().$promise.then(function (data) {
+                    $scope.adsList = data;
+                }, function (error) {
+
+                });
             } else {
-                $scope.adsList = adsRequester.getAdsByFilter();
+                adsRequester.getAdsByFilter().$promise.then(function (data) {
+                    $scope.adsList = data;
+                }, function (error) {
+
+                });
 
             }
 
         }
-
 
 
     });

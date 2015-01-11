@@ -36,7 +36,6 @@ adsApp.service('SharedContent', function SharedContent() {
             return selectedPage;
         },
         setModalMessage : function(message){
-
             $('#myModal').find('.modal-body').text(message);
             $('#myModal').modal('show');
         }

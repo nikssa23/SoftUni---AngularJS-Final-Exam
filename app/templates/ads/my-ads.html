@@ -1,9 +1,12 @@
-<div ng-controller="MyAdsController" class="center-box container col-md-12 ">
+<div ng-controller="MyAdsController" class="container col-md-10 col-md-offset-1 ">
     <div class="center-box">
         <br />
         <div class="page-header text-center">
             <h1>My Ads</h1>
         </div>
+    </div>
+    <div ng-if="!haveAds" class="text-center">
+            <h2>You haven't ads. </h2>
     </div>
     <div >
         <div class="col-md-6 " ng-repeat="ads in myAds">

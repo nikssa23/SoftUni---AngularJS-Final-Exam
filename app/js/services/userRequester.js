@@ -1,8 +1,34 @@
-adsApp.service('userRequester', function userRequester($resource,$http,$q,baseUrl) {
+adsApp.service('userRequester', function userRequester($resource, $http, $q, baseUrl) {
+
+
+    var userProfile = $resource(baseUrl + 'user/profile', {
+        name: '@name',
+        email: '@email',
+        phonenumber: '@phonenumber',
+        townid: '@townid'
+    }, {
+        update: {
+            method: 'PUT'
+        }
+    });
+
+    var userPassword = $resource(baseUrl + 'user/changepassword', {
+        oldPassword: '@oldPassword',
+        newPassword: '@newPassword',
+        confirmPassword: '@confirmPassword'
+    }, {
+        update: {
+            method: 'PUT'
+        }
+    });
 
     function makeUserLogged(name, token) {
         localStorage.setItem('username', name);
         localStorage.setItem('token', token);
+    }
+
+    function setHeaders() {
+        $http.defaults.headers.common['Authorization'] = 'Bearer ' + localStorage.getItem('token');
     }
 
     function registerUser(user) {
@@ -65,6 +91,19 @@ adsApp.service('userRequester', function userRequester($resource,$http,$q,baseUr
         localStorage.removeItem('token');
     }
 
+    function getUserProfile() {
+        setHeaders();
+        return userProfile.get();
+    }
+
+    function updateUserProfile(user) {
+        return userProfile.update(user);
+    }
+
+    function changeUserPassword(user) {
+        return userPassword.update(user);
+    }
+
     return {
         makeUserLogged: makeUserLogged,
         registerUser: registerUser,
@@ -72,6 +111,9 @@ adsApp.service('userRequester', function userRequester($resource,$http,$q,baseUr
         getUsername: getUsername,
         checkUserLogin: checkUserLogin,
         loginUser: loginUser,
-        userLogout: userLogout
+        userLogout: userLogout,
+        getUserProfile: getUserProfile,
+        updateUserProfile: updateUserProfile,
+        changeUserPassword:changeUserPassword
     }
 })

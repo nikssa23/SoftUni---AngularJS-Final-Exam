@@ -1,4 +1,4 @@
-<div ng-controller="PublishNewAddController">
+<div ng-controller="PublishNewAddController" class="col-md-10 col-lg-offset-1">
     <br/>
 
     <div class="page-header text-center">
@@ -34,13 +34,24 @@
 
                     <li><h3>Image:</h3></li>
                     <li>
-                        <div class="input-group">
-                        <span class="input-group-addon">
-                            <span class="glyphicon glyphicon-picture" aria-hidden="true"></span>
-                        </span>
-                            <input type="file" class="form-control" placeholder="Title" ng-model="ad.ImageDataURL">
-                        </div>
+                        <label class="btn btn-default col-lg-12" for="my-file-selector">
+                            <input id="my-file-selector" type="file" style="display:none;" onchange="angular.element(this).scope().fileSelected(this)">
+                            <div class="ad-img">
+
+                                <div ng-if="changeImage">
+                                    <p>Click to select new image</p>
+                                    <img ng-src="{{ad.imageDataUrl}}" src="" />
+                                    <br />
+                                    <br />
+                                </div>
+                                <div ng-if="!changeImage">
+                                    CLICK TO SELECT IMAGE
+                                </div>
+                            </div>
+
+                        </label>
                     </li>
+                    <li><br /></li>
 
                     <li><h3>Select Town</h3></li>
 

@@ -8,7 +8,8 @@ adsApp.service('adsRequester', function adsRequester($resource, $http, baseUrl,p
         text: '@text',
         categoryid: '@categoryid',
         townid: '@townid',
-        ImageDataURL: '@ImageDataURL'
+        ImageDataURL: '@ImageDataURL',
+        changeimage :"@changeImage"
     }, {
         update: {
             method: 'PUT'

@@ -8,12 +8,13 @@
         <div class="page-header">
             <h2>All ads </h2>
         </div>
-        <div>
+
+        <div >
             <div class="col-md-12" ng-repeat="ads in adsList.ads">
 
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        <h3 class="panel-title "><a href="#/ads/{{ads.id}}">{{ads.title}}</a></h3>
+                        <h3 class="panel-title ">{{ads.title}}</a></h3>
                     </div>
 
                     <div class="panel-body">
@@ -21,8 +22,8 @@
                         <div class="row">
 
                             <div class="col-md-2">
-                                <a href="#" class="thumbnail">
-                                    <img ng-src="{{ads.imageDataUrl}}" src="" style="height: 100px;"/>
+                                <a href="javascript: void(0);" img-data="{{ads.imageDataUrl}}"  fancybox  data-title="{{ads.title}}" class="thumbnail">
+                                    <img ng-src="{{ads.imageDataUrl ||'img/no-image.png' }}"  src="" style="height: 100px;"/>
                                 </a>
                                 <!--                    <a href="" class="btn btn-success btn-sm">Price: 150.00 Lv.</a> -->
                             </div>
@@ -70,7 +71,7 @@
         <div list-categories></div>
         <br/>
         <div list-towns></div>
-        <div select-town></div>
+
     </div>
 </div>
 
