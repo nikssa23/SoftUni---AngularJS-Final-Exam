@@ -3,7 +3,7 @@ adsApp.controller('LoginAndRegisterController', function LoginAndRegisterControl
     $scope.loadHeaderTeplate = userRequester.checkUserLogin();
     $scope.userName = "";
 
-    if(!userRequester.checkUserLogin()){
+    if(userRequester.checkUserLogin()){
         $location.path('/home');
     }
 

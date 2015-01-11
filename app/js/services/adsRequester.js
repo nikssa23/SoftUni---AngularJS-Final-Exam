@@ -1,4 +1,4 @@
-adsApp.service('adsRequester', function adsRequester($resource, $http, baseUrl,pageSize, userRequester, SharedContent) {
+adsApp.service('adsRequester', function adsRequester($resource, $http, baseUrl, pageSize, userRequester, SharedContent) {
 
     var allAdsList = $resource(baseUrl + 'ads?pagesize=10&startpage=1');
 
@@ -9,12 +9,21 @@ adsApp.service('adsRequester', function adsRequester($resource, $http, baseUrl,p
         categoryid: '@categoryid',
         townid: '@townid',
         ImageDataURL: '@ImageDataURL',
-        changeimage :"@changeImage"
+        changeimage: "@changeImage"
     }, {
         update: {
             method: 'PUT'
         }
     });
+
+    var userAdsPublishAgain = $resource(baseUrl + 'user/ads/publishagain/:id', {
+        id: "@id"
+    }, {
+        update: {
+            method: 'PUT'
+        }
+    });
+
 
     function setHeaders() {
         $http.defaults.headers.common['Authorization'] = 'Bearer ' + userRequester.getToken();
@@ -45,48 +54,55 @@ adsApp.service('adsRequester', function adsRequester($resource, $http, baseUrl,p
         return userAds.update(ad);
     }
 
-    function deleteAd(id){
+    function deleteAd(id) {
         var ad = {};
         ad.id = id;
         setHeaders();
         return userAds.delete(ad);
     }
 
-    function getAdsByFilter(){
-        var filterUrl = baseUrl+'ads';
-        if(SharedContent.getTown()!=null){
-            filterUrl+='?townid='+SharedContent.getTown();
+    function getAdsByFilter() {
+        var filterUrl = baseUrl + 'ads';
+        if (SharedContent.getTown() != null) {
+            filterUrl += '?townid=' + SharedContent.getTown();
         }
 
-        if(SharedContent.getCategory()!=null){
-            if(SharedContent.getTown() == null){
-                filterUrl+='?';
-            }else{
-                filterUrl+="&";
+        if (SharedContent.getCategory() != null) {
+            if (SharedContent.getTown() == null) {
+                filterUrl += '?';
+            } else {
+                filterUrl += "&";
             }
-            filterUrl+='categoryid='+SharedContent.getCategory();
+            filterUrl += 'categoryid=' + SharedContent.getCategory();
         }
 
-        if(SharedContent.getSelectedPage()!== null){
-            if(SharedContent.getCategory()!==null || SharedContent.getTown()!==null){
-                filterUrl+='&';
-            }else{
-                filterUrl+="?";
+        if (SharedContent.getSelectedPage() !== null) {
+            if (SharedContent.getCategory() !== null || SharedContent.getTown() !== null) {
+                filterUrl += '&';
+            } else {
+                filterUrl += "?";
             }
-            filterUrl+='pagesize='+pageSize+'&startpage='+SharedContent.getSelectedPage();
+            filterUrl += 'pagesize=' + pageSize + '&startpage=' + SharedContent.getSelectedPage();
         }
 
         var resourceUrl = $resource(filterUrl);
-      //  setHeaders();
+        //  setHeaders();
         return resourceUrl.get();
     }
+
+    function PublishAdAgain(ad) {
+        setHeaders();
+        return userAdsPublishAgain.update(ad);
+    }
+
     return {
         publishNewAd: publishNewAd,
         getAdsList: getAdsList,
         getMyAds: getMyAds,
         getAdById: getAdById,
-        updateMyAd:updateMyAd,
-        deleteAd:deleteAd,
-        getAdsByFilter:getAdsByFilter
+        updateMyAd: updateMyAd,
+        deleteAd: deleteAd,
+        getAdsByFilter: getAdsByFilter,
+        PublishAdAgain:PublishAdAgain
     }
 })

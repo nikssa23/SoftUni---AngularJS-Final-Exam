@@ -36,6 +36,8 @@
                             Date: {{ads.date | date : 'd-MMM-yyyy'}}
                             <span class="glyphicon glyphicon-flag" aria-hidden="true"></span>
                             Status : {{ads.status |  status}}
+
+                            <a  ng-if="checkIsInactive(ads.status)" href="" target="_self" ng-click="publishAdAgain(ads)" class="btn btn-info btn-sm">Publish again</a>
                             <a href="#/myAds/edit/{{ads.id}}" class="btn btn-success btn-sm ">Edit</a>
                             <a href="#/myAds/delete/{{ads.id}}" class="btn btn-danger btn-sm ">Delete</a>
                         </div>

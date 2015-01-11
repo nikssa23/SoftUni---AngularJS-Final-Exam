@@ -13,4 +13,20 @@ adsApp.controller('MyAdsController', function MyAdsController($scope,$routeParam
         $scope.myAds = data.ads;
     });
 
+    $scope.checkIsInactive=function(string){
+        if(string === "Inactive"){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+    $scope.publishAdAgain = function(ad){
+        adsRequester.PublishAdAgain(ad).$promise.then(function(data){
+            SharedContent.setModalMessage(data.message);
+        },function(error){
+            SharedContent.setModalMessage(error.message);
+        })
+    }
+
 });
